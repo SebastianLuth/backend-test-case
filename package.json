@@ -1,0 +1,49 @@
+{
+  "name": "backend-test",
+  "version": "1.0.0",
+  "description": "\"# backend-test-case\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "build": "tsc",
+    "start": "node dist/src/index.js"
+
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianLuth/backend-test-case.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SebastianLuth/backend-test-case/issues"
+  },
+  "homepage": "https://github.com/SebastianLuth/backend-test-case#readme",
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "express": "^4.21.2",
+    "winston": "^3.17.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@jest/globals": "^29.7.0",
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.11",
+    "@types/supertest": "^6.0.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "prisma": "^6.5.0",
+    "supertest": "^7.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

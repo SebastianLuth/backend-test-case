@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Books {
+  code   String @id @db.VarChar(100)
+  title  String @db.VarChar(100)
+  author String @db.VarChar(100)
+  stock  Int
+
+  borrowRecords BorrowRecord[]
+
+  @@map("books")
+}
+
+model Member {
+  code       String  @id @db.VarChar(100)
+  name       String  @db.VarChar(100)
+  isPenalized Boolean @default(false)
+
+  borrowRecords BorrowRecord[]
+
+  @@map("members")
+}
+
+model BorrowRecord {
+  id         String   @id @default(uuid())
+  memberCode String   @db.VarChar(100)
+  bookCode   String   @db.VarChar(100)
+  borrowedAt DateTime @default(now())
+  returnedAt DateTime? // Nullable, karena bisa belum dikembalikan
+
+  member Member @relation(fields: [memberCode], references: [code])
+  book   Books   @relation(fields: [bookCode], references: [code])
+
+  @@unique([bookCode], name: "unique_borrowed_book") // Buku yang sedang dipinjam tidak bisa dipinjam lagi
+  @@map("borrow_records")
+}
+
+
+
+
