@@ -31,3 +31,13 @@ npm run start
 
 
 ## Untuk Algoritma test ada di file algoritma-test.js
+
+
+```
+Tools Yang digunakan 
+
+SQL Dengan Prisma
+Express
+Jest
+Dll
+```
